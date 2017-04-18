@@ -54,17 +54,21 @@ Assuming key is named `bigquery.p12` and is located in the same folder as `docke
 
 - Add the following to the top of the `docker-compose.yml` file right below `version`:
 
-	secrets:
-	  bigquery.p12:
-	      file: "./bigquery.p12"
+```yaml
+secrets:
+  bigquery.p12:
+      file: "./bigquery.p12"
+```
 
  - Modify the jasperserver service so it starts like this:
 
-	services:
-	  jasperserver:
-	    secrets:
-	      - bigquery.p12
-	    image: bbustin/js-docker-bigquery
+```yaml
+services:
+  jasperserver:
+    secrets:
+      - bigquery.p12
+    image: bbustin/js-docker-bigquery
+```
 
 - bring up the containers `docker-compose up -d`
 
