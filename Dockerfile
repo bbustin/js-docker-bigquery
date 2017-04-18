@@ -8,4 +8,4 @@ RUN  \
     rm -rf /tmp/*
 
 # use applicationContext.xml with autoCommitUnsupportedDrivers set forthe Simba BigQuery JDBC driver
-COPY applicationContext.xml /usr/local/tomcat/webapp/jasper/WEB-INF/
+COPY applicationContext.xml /usr/src/jasperreports-server/buildomatic/conf_source/ieCe
