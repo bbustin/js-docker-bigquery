@@ -3,7 +3,7 @@
 # in the license file that is distributed with this file.
 # version: 6.3.0-v1.0.4
 
-version: '2'
+version: '3.1'
 
 # network used by both JasperReports Server and PostgreSQL containers
 networks:
@@ -15,6 +15,7 @@ networks:
 services:
   jasperserver:
     # to build instead of using image
+    # - change version towards top of file from 3.1 to 2
     # - comment image line
     # - uncomment build line
     image: bbustin/js-docker-bigquery
@@ -32,14 +33,6 @@ services:
     # setting following values here will override settings from env_file
     environment:
       - DB_HOST=js_database
-    volumes:
-      - jrs_customization:/usr/local/share/jasperreports/customization
-      # for Mac OS you may want to define local path for volume mounts. 
-      # Note that defining path for a named volume is not supported 
-      # by Compose. For example:
-      # - /some-local-path:/usr/local/tomcat/webapps/jasperserver-pro
-      # - ~/jasperreports-pro/license:/usr/local/share/jasperreports-pro/license
-      # - /tmp/customization:/usr/local/share/jasperreports-pro/customization
   js_database:
     image: postgres:9.4
     env_file: .env
