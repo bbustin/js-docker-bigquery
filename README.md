@@ -2,15 +2,15 @@
 ### Community Edition with Simba JDBC Driver for Google BigQuery
 
 Builds upon the [bbustin/js-docker](https://hub.docker.com/r/bbustin/js-docker/) image.
-Adds the Simba JDBC Driver for Google BigQuery and modifies the WEB-INF/applicationContext.xml
+Adds the Simba JDBC Driver for Google BigQuery and modifies the `WEB-INF/applicationContext.xml`
 to allow the driver to work.
 
-This is probably no ready for production use. USe at your own risk.
+This is probably not ready for production use. Use at your own risk.
 
 Please also refer to the [Jasper Server documentation](http://community.jaspersoft.com/project/jasperreports-server)
 
 There is a professional version of Jasper Server available with an officially supported way of deploying using
-docker. [Jasper Server Comparison of Jasper Server versions](https://www.jaspersoft.com/editions)
+docker. [Comparison of Jasper Server versions](https://www.jaspersoft.com/editions)
 
 ## How to use
 
@@ -53,20 +53,18 @@ not believe this encryption is possible, so it is likely stored in plain text so
 Assuming key is named `bigquery.p12` and is located in the same folder as `docker-compose.yml`.
 
 - Add the following to the top of the `docker-compose.yml` file right below `version`:
-`secrets:
-  bigquery.p12:
-      file: "./bigquery.p12"`
+
+	secrets:
+	  bigquery.p12:
+	      file: "./bigquery.p12"
 
  - Modify the jasperserver service so it starts like this:
- `services:
-  jasperserver:
-    secrets:
-      - bigquery.p12
-    # to build instead of using image
-    # - change version towards top of file from 3.1 to 2
-    # - comment image line
-    # - uncomment build line
-    image: bbustin/js-docker-bigquery`
+
+	services:
+	  jasperserver:
+	    secrets:
+	      - bigquery.p12
+	    image: bbustin/js-docker-bigquery
 
 - bring up the containers `docker-compose up -d`
 
@@ -77,4 +75,4 @@ container at `/run/secrets/bigquery.p12`.
 
 #### For more information
 
-Download the Simba JDBC Driver [here](https://cloud.google.com/bigquery/partners/simba-drivers/), unzip it, and read the included PDF.
+Download the Simba JDBC Driver [here](https://cloud.google.com/bigquery/partners/simba-drivers/), unzip it, and refer to the included PDF.
